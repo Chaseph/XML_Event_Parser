@@ -11,11 +11,12 @@ class XML_Parser
 	const PARSER_FULL = 'Handler_Full';
 	const PARSER_START = 'Handler_Start';
 
-	public function __construct(&$event_handler_object, $handler_object_function)
+	public function __construct(&$event_handler_object, $handler_object_function, $megabyte_chunk_size = 4)
 	{
-		$this->set_handler(self::PARSER_FULL);
 		$this->event_handler_object = $event_handler_object;
 		$this->handler_object_function = $handler_object_function;
+		$this->megabyte_chunk_size = $megabyte_chunk_size;
+		$this->set_handler(self::PARSER_FULL);
 	}
 
 	public function __destruct()
@@ -58,6 +59,7 @@ class XML_Parser
 				$progress_reporter->$progress_reporter_func($progress, $bytes_to_process);
 			}
 		}
+
 		xml_parser_free($xml_parser);
 		return true;
 	}
@@ -109,7 +111,7 @@ class XML_Parser
 	private function parse_chunk_size()
 	{
 		$megabyte = 1024 * 1024;
-		return 4*$megabyte;
+		return $this->megabyte_chunk_size * $megabyte;
 	}
 
 	private function tag_tree_pop()
@@ -133,6 +135,7 @@ class XML_Parser
 
 	private $event_handler_object;
 	private $handler_object_function;
+	private $megabyte_chunk_size;
 	private $parse_handler;
 	private $tag_tree;
 }
