@@ -1,4 +1,4 @@
-#XML_Event_Parser
+##XML_Event_Parser
 
 An easily extensible wrapper to the SAX XML Parser. Quickly parses xml without creating a DOM and triggers events based on tags run into. This wrapper allows all events to be handled by 1 function, so you don't need to clutter your object with event handlers.
 
