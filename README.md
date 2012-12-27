@@ -1,17 +1,16 @@
-XML_Event_Parser
-================
+#XML_Event_Parser
 
 An easily extensible wrapper to the SAX XML Parser. Quickly parses xml without creating a DOM and triggers events based on tags run into. This wrapper allows all events to be handled by 1 function, so you don't need to clutter your object with event handlers.
 
 
-#How To Use It
+##How To Use It
 
 **Include the XML_Parser.php file.**
 
 **Instantiate an XML_Parser object, passing it the object you're going to use for event handling, and the function within that object that will be called and passed data at each event.**
 
 
-##Each of the parse handlers create different kinds of filters for the events:
+###Each of the parse handlers create different kinds of filters for the events:
 
 
 * **Full** - Triggers an event for every tag, opening or closing.
