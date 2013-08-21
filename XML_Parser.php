@@ -126,11 +126,7 @@ class XML_Parser
 
 	private function verify_progress_reporter($progress_reporter, $progress_reporter_func)
 	{
-		if (is_object($progress_reporter) && method_exists($progress_reporter, $progress_reporter_func)) {
-			return true;
-		} else {
-			return false;
-		}
+		return is_object($progress_reporter) && method_exists($progress_reporter, $progress_reporter_func);
 	}
 
 	private $event_handler_object;
